@@ -108,8 +108,8 @@ def import_SSL_cert():
     headers = {'content-type': 'application/json'}
     f = open(args["scf"],"r")
     read_file = f.read()
-    read_file = re.sub("\n","",read_file)
-    read_file = re.search("-----B.+",read_file).group()
+    # read_file = re.sub("\n","",read_file)
+    # read_file = re.search("-----B.+",read_file).group()
     f.close()
     payload={"CertificateType":cert_type,"SSLCertificateFile":read_file}
     response = requests.post(url, data=json.dumps(payload), headers=headers, verify=False,auth=(idrac_username,idrac_password))
